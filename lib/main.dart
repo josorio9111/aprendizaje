@@ -1,3 +1,4 @@
+import 'package:aprendizaje/challege_store_nike/home.dart';
 import 'package:aprendizaje/challenge_nike/home.dart';
 import 'package:aprendizaje/multiple_card/home.dart';
 import 'package:flutter/material.dart';
@@ -32,10 +33,14 @@ class ListaWidget extends StatelessWidget {
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: const [
-              ButtonExamples(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              const ButtonExamples(
                   nombre: 'Multiple Card Flow', page: MultipleCardFlow()),
-              ButtonExamples(nombre: 'Chanllege Nike', page: ChallegeNike()),
+              const ButtonExamples(
+                  nombre: 'Chanllege Nike', page: ChallegeNike()),
+              ButtonExamples(
+                  nombre: 'Change Nike Store', page: StoreNikePage()),
             ],
           ),
         ),

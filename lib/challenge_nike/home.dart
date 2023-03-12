@@ -62,18 +62,28 @@ class _ChallegeNikeState extends State<ChallegeNike> {
             child: Row(
               children: List.generate(
                   listCategorias.length,
-                  (index) => Padding(
-                        padding: const EdgeInsets.only(left: 10),
-                        child: Text(
-                          listCategorias[index],
-                          style: TextStyle(
-                              color: page == index
-                                  ? listShoes[page].color
-                                  : Colors.white,
-                              fontSize: 20,
-                              fontWeight: page == index
-                                  ? FontWeight.bold
-                                  : FontWeight.normal),
+                  (index) => GestureDetector(
+                        onTap: () async {
+                          await _pageController.animateToPage(index,
+                              duration: const Duration(milliseconds: 400),
+                              curve: Curves.linear);
+                          setState(() {
+                            page = index;
+                          });
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 10),
+                          child: Text(
+                            listCategorias[index],
+                            style: TextStyle(
+                                color: page == index
+                                    ? listShoes[page].color
+                                    : Colors.white,
+                                fontSize: 20,
+                                fontWeight: page == index
+                                    ? FontWeight.bold
+                                    : FontWeight.normal),
+                          ),
                         ),
                       )),
             ),
