@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class City {
   final String nombre;
   final String price;

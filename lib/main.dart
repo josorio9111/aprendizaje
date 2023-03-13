@@ -1,5 +1,7 @@
 import 'package:aprendizaje/challege_store_nike/home.dart';
 import 'package:aprendizaje/challenge_nike/home.dart';
+import 'package:aprendizaje/custom_bottom_navi_bar/home.dart';
+import 'package:aprendizaje/custom_painter/home.dart';
 import 'package:aprendizaje/multiple_card/home.dart';
 import 'package:flutter/material.dart';
 
@@ -41,6 +43,10 @@ class ListaWidget extends StatelessWidget {
                   nombre: 'Chanllege Nike', page: ChallegeNike()),
               ButtonExamples(
                   nombre: 'Change Nike Store', page: StoreNikePage()),
+              const ButtonExamples(
+                  nombre: 'Custom Painter', page: CustomPainterPage()),
+              const ButtonExamples(
+                  nombre: 'Custom Navi Bar', page: CustomNaviBar()),
             ],
           ),
         ),

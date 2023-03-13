@@ -131,7 +131,8 @@ class _MultipleCardFlowState extends State<MultipleCardFlow>
 }
 
 class MyTextField extends AnimatedWidget {
-  MyTextField(Animation<double> animation) : super(listenable: animation);
+  const MyTextField(Animation<double> animation, {super.key})
+      : super(listenable: animation);
 
   Animation<double> get animation => listenable as Animation<double>;
 
