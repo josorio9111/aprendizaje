@@ -79,7 +79,7 @@ class _CustomPainterPageState extends State<CustomPainterPage> {
                             padding: const EdgeInsets.symmetric(
                                 vertical: 6, horizontal: 12),
                             decoration: BoxDecoration(
-                                color: Colors.blue,
+                                color: Colors.purple,
                                 borderRadius: BorderRadius.circular(10)),
                             child: const Icon(
                               Icons.calendar_month_outlined,

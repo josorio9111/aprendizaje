@@ -5,12 +5,24 @@ class MyPainter extends CustomPainter {
   Color color;
   @override
   void paint(Canvas canvas, Size size) {
+    final x = size.width;
+    final y = size.height;
+    final colors = [
+      Colors.pink.shade400,
+      Colors.pink.shade100,
+      Colors.blue.shade50
+    ];
+    final stops = [0.0, 0.65, 1.0];
+    final gradient = LinearGradient(
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+        colors: colors,
+        stops: stops);
     Paint paint = Paint()
       ..color = color
       ..style = PaintingStyle.fill
-      ..strokeWidth = 5;
-    final x = size.width;
-    final y = size.height;
+      ..shader = gradient.createShader(
+          Rect.fromCenter(center: Offset(x / 2, y / 2), width: x, height: y));
     Path path = Path()
       ..moveTo(0, 0)
       ..lineTo(0, y * 0.9)
