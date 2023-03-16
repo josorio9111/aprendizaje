@@ -7,15 +7,26 @@ class MyPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     Paint paint = Paint()
       ..color = color
-      ..style = PaintingStyle.fill;
+      ..style = PaintingStyle.fill
+      ..strokeWidth = 5;
     final x = size.width;
     final y = size.height;
     Path path = Path()
       ..moveTo(0, 0)
-      ..lineTo(0, y)
-      ..lineTo(x * 0.2, y)
-      ..quadraticBezierTo(x * 0.5, y + y * 0.5, x * 0.8, y)
-      ..lineTo(x, y)
+      ..lineTo(0, y * 0.9)
+      ..quadraticBezierTo(x * .01 * .5, y, x * .1, y)
+      ..lineTo(x * .35, y)
+      ..quadraticBezierTo(x * 0.4, y, x * .4, y * .95)
+      ..lineTo(x * .4, y * .85)
+      ..quadraticBezierTo(x * .4, y * .8, x * .42, y * .8)
+      ..lineTo(x * .58, y * .8)
+      ..quadraticBezierTo(x * .6, y * .8, x * .6, y * .85)
+      ..lineTo(x * .6, y * .85)
+      ..lineTo(x * .6, y * .95)
+      ..quadraticBezierTo(x * .6, y * .99, x * .63, y)
+      ..lineTo(x * .68, y)
+      ..lineTo(x * .9, y)
+      ..quadraticBezierTo(x * 0.99, y, x, y * .9)
       ..lineTo(x, 0)
       ..lineTo(0, 0)
       ..close();

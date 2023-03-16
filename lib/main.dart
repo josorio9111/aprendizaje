@@ -2,6 +2,7 @@ import 'package:aprendizaje/challege_store_nike/home.dart';
 import 'package:aprendizaje/challenge_nike/home.dart';
 import 'package:aprendizaje/custom_bottom_navi_bar/home.dart';
 import 'package:aprendizaje/custom_painter/home.dart';
+import 'package:aprendizaje/custom_painter/water_view.dart';
 import 'package:aprendizaje/multiple_card/home.dart';
 import 'package:flutter/material.dart';
 
@@ -25,6 +26,7 @@ class ListaWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Pruebas'),
