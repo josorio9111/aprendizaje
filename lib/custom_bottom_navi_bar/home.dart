@@ -7,6 +7,7 @@ class CustomNaviBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       backgroundColor: Colors.pink.shade50,
       bottomNavigationBar: CurvedNavigationBar(
           buttonBackgroundColor: Colors.white,

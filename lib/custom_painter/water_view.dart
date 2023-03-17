@@ -5,10 +5,10 @@ class WaterView extends StatefulWidget {
   const WaterView({Key? key}) : super(key: key);
 
   @override
-  _WaterViewState createState() => _WaterViewState();
+  WaterViewState createState() => WaterViewState();
 }
 
-class _WaterViewState extends State<WaterView> with TickerProviderStateMixin {
+class WaterViewState extends State<WaterView> with TickerProviderStateMixin {
   Future<bool> getData() async {
     await Future<dynamic>.delayed(const Duration(milliseconds: 50));
     return true;
@@ -48,10 +48,9 @@ class _WaterViewState extends State<WaterView> with TickerProviderStateMixin {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.end,
-                          children: <Widget>[
+                          children: const <Widget>[
                             Padding(
-                              padding:
-                                  const EdgeInsets.only(left: 4, bottom: 3),
+                              padding: EdgeInsets.only(left: 4, bottom: 3),
                               child: Text(
                                 '2100',
                                 textAlign: TextAlign.center,
@@ -64,8 +63,7 @@ class _WaterViewState extends State<WaterView> with TickerProviderStateMixin {
                               ),
                             ),
                             Padding(
-                              padding:
-                                  const EdgeInsets.only(left: 8, bottom: 8),
+                              padding: EdgeInsets.only(left: 8, bottom: 8),
                               child: Text(
                                 'ml',
                                 textAlign: TextAlign.center,
@@ -80,9 +78,8 @@ class _WaterViewState extends State<WaterView> with TickerProviderStateMixin {
                             ),
                           ],
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              left: 4, top: 2, bottom: 14),
+                        const Padding(
+                          padding: EdgeInsets.only(left: 4, top: 2, bottom: 14),
                           child: Text(
                             'of daily goal 3.5L',
                             textAlign: TextAlign.center,
@@ -149,7 +146,7 @@ class _WaterViewState extends State<WaterView> with TickerProviderStateMixin {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.center,
-                              children: <Widget>[
+                              children: const <Widget>[
                                 SizedBox(
                                   width: 24,
                                   height: 24,
@@ -195,8 +192,8 @@ class _WaterViewState extends State<WaterView> with TickerProviderStateMixin {
                               blurRadius: 8.0),
                         ],
                       ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(6.0),
+                      child: const Padding(
+                        padding: EdgeInsets.all(6.0),
                         child: Icon(
                           Icons.add,
                           color: Colors.blue,
@@ -218,8 +215,8 @@ class _WaterViewState extends State<WaterView> with TickerProviderStateMixin {
                               blurRadius: 8.0),
                         ],
                       ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(6.0),
+                      child: const Padding(
+                        padding: EdgeInsets.all(6.0),
                         child: Icon(
                           Icons.remove,
                           color: Colors.blue,
@@ -236,7 +233,7 @@ class _WaterViewState extends State<WaterView> with TickerProviderStateMixin {
                   width: 60,
                   height: 160,
                   decoration: BoxDecoration(
-                    color: Color(0xFFE8EDFE),
+                    color: const Color(0xFFE8EDFE),
                     borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(80.0),
                         bottomLeft: Radius.circular(80.0),
@@ -249,9 +246,7 @@ class _WaterViewState extends State<WaterView> with TickerProviderStateMixin {
                           blurRadius: 4),
                     ],
                   ),
-                  child: WaveView(
-                    percentageValue: 60.0,
-                  ),
+                  child: const WaveView(percentageValue: 60.0),
                 ),
               )
             ],

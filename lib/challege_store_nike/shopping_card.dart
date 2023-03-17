@@ -11,27 +11,27 @@ class ShoppingCard extends StatefulWidget {
 
 class _ShoppingCardState extends State<ShoppingCard>
     with TickerProviderStateMixin {
-  AnimationController? _controller;
-  Animation? _animationReSize;
-  Animation? _animationMove1;
-  Animation? _animationMove2;
+  late AnimationController _controller;
+  late Animation _animationReSize;
+  late Animation _animationMove1;
+  late Animation _animationMove2;
 
   @override
   void initState() {
     _controller = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 2000));
     _animationReSize = Tween<double>(begin: 1.0, end: 0.0).animate(
-        CurvedAnimation(parent: _controller!, curve: const Interval(0.0, 0.3)));
+        CurvedAnimation(parent: _controller, curve: const Interval(0.0, 0.3)));
     _animationMove1 = Tween<double>(begin: 0.0, end: 1.0).animate(
         CurvedAnimation(
-            parent: _controller!,
+            parent: _controller,
             curve: const Interval(0.3, 0.6,
                 curve: Curves.fastLinearToSlowEaseIn)));
     _animationMove2 = Tween<double>(begin: 0.0, end: 1.0).animate(
         CurvedAnimation(
-            parent: _controller!,
+            parent: _controller,
             curve: const Interval(0.6, 1, curve: Curves.elasticIn)));
-    _controller?.addStatusListener(_addListenerController);
+    _controller.addStatusListener(_addListenerController);
     super.initState();
   }
 
@@ -43,8 +43,8 @@ class _ShoppingCardState extends State<ShoppingCard>
 
   @override
   void dispose() {
-    _controller?.removeStatusListener(_addListenerController);
-    _controller?.dispose();
+    _controller.removeStatusListener(_addListenerController);
+    _controller.dispose();
     super.dispose();
   }
 
@@ -55,10 +55,10 @@ class _ShoppingCardState extends State<ShoppingCard>
     return Material(
       color: Colors.transparent,
       child: AnimatedBuilder(
-        animation: _controller!,
+        animation: _controller,
         builder: (context, child) {
           final panelWidth =
-              (size.width * _animationReSize?.value).clamp(60, size.width);
+              (size.width * _animationReSize.value).clamp(60.0, size.width);
 
           return Stack(fit: StackFit.expand, children: [
             Positioned.fill(
@@ -71,18 +71,18 @@ class _ShoppingCardState extends State<ShoppingCard>
                 ),
               ),
             ),
-            if (_animationMove1?.value != 1)
+            if (_animationMove1.value != 1)
               Positioned(
                 top: size.height * 0.4 +
-                    (_animationMove1?.value * size.height * 0.4815),
-                width: 60,
+                    (_animationMove1.value * size.height * 0.4815),
+                // width: 60,
                 left: size.width / 2 - panelWidth / 2,
                 child: panelSizeWidth(size),
               ),
             Positioned(
-                bottom: 40.0 - (_animationMove2?.value * 100),
+                bottom: 40.0 - (_animationMove2.value * 100),
                 left: size.width / 2 -
-                    (200 * _animationReSize?.value).clamp(60, 200) / 2,
+                    (200 * _animationReSize.value).clamp(60.0, 200.0) / 2,
                 child: buttomBlack())
           ]);
         },
@@ -93,10 +93,10 @@ class _ShoppingCardState extends State<ShoppingCard>
   InkWell buttomBlack() {
     return InkWell(
       onTap: () {
-        _controller?.forward();
+        _controller.forward();
       },
       child: SizedBox(
-        width: (_animationReSize?.value * 200).clamp(60, 200),
+        width: (_animationReSize.value * 200).clamp(60.0, 200.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -108,13 +108,13 @@ class _ShoppingCardState extends State<ShoppingCard>
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(
-                    _animationMove1?.value == 1
+                    _animationMove1.value == 1
                         ? Icons.favorite
                         : Icons.shopping_bag_outlined,
                     color: Colors.white,
                     size: 30,
                   ),
-                  if (_animationReSize?.value == 1) ...[
+                  if (_animationReSize.value == 1) ...[
                     const SizedBox(width: 10),
                     Text(
                       'Add to cart'.toUpperCase(),
@@ -143,35 +143,36 @@ class _ShoppingCardState extends State<ShoppingCard>
             child: child,
           ),
           child: Container(
-            height: (size.height * 0.6 * _animationReSize?.value)
+            height: (size.height * 0.6 * _animationReSize.value)
                 .clamp(60, size.height * 0.6),
-            width: (size.width * _animationReSize?.value).clamp(60, size.width),
+            width:
+                (size.width * _animationReSize.value).clamp(60.0, size.width),
             padding: const EdgeInsets.all(15),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.only(
                   topLeft: const Radius.circular(30),
                   topRight: const Radius.circular(30),
                   bottomLeft:
-                      Radius.circular(_animationReSize?.value == 1 ? 0 : 30),
+                      Radius.circular(_animationReSize.value == 1 ? 0 : 30),
                   bottomRight:
-                      Radius.circular(_animationReSize?.value == 1 ? 0 : 30)),
+                      Radius.circular(_animationReSize.value == 1 ? 0 : 30)),
               color: Colors.white,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                SizedBox(height: _animationReSize?.value == 1 ? 30 : 0),
+                SizedBox(height: _animationReSize.value == 1 ? 30 : 0),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Expanded(
                       child: SizedBox(
-                        height: (120.0 * _animationReSize?.value)
-                            .clamp(30.0, 120.0),
+                        height:
+                            (120.0 * _animationReSize.value).clamp(30.0, 120.0),
                         child: widget.shoe.images.first,
                       ),
                     ),
-                    if (_animationReSize?.value == 1) ...[
+                    if (_animationReSize.value == 1) ...[
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.end,
@@ -203,7 +204,7 @@ class _ShoppingCardState extends State<ShoppingCard>
                     ],
                   ],
                 ),
-                if (_animationReSize?.value == 1) ...[
+                if (_animationReSize.value == 1) ...[
                   const SizedBox(height: 50),
                   Text('Avalible Sizes'.toUpperCase()),
                   const SizedBox(height: 20),

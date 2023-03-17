@@ -24,7 +24,7 @@ class _MultipleCardFlowState extends State<MultipleCardFlow>
     with TickerProviderStateMixin {
   final _pageController = PageController(viewportFraction: 0.8);
   double page = 0.0;
-  AnimationController? _animationControler;
+  late AnimationController _animationControler;
 
   @override
   void initState() {
@@ -43,7 +43,7 @@ class _MultipleCardFlowState extends State<MultipleCardFlow>
   }
 
   void _onSwipe(City city) async {
-    _animationControler?.forward();
+    _animationControler.forward();
     await Navigator.push(
       context,
       PageRouteBuilder(
@@ -55,12 +55,12 @@ class _MultipleCardFlowState extends State<MultipleCardFlow>
         ),
       ),
     );
-    _animationControler?.reverse();
+    _animationControler.reverse();
   }
 
   @override
   void dispose() {
-    _animationControler?.dispose();
+    _animationControler.dispose();
     _pageController.removeListener(_lisenScroll);
     _pageController.dispose();
     super.dispose();
@@ -83,7 +83,7 @@ class _MultipleCardFlowState extends State<MultipleCardFlow>
                   child: Row(
                     children: [
                       Expanded(
-                        child: MyTextField(_animationControler!),
+                        child: MyTextField(_animationControler),
                       ),
                       IconButton(
                           onPressed: () {},
@@ -108,7 +108,7 @@ class _MultipleCardFlowState extends State<MultipleCardFlow>
                       final opacity = porcent.clamp(0.0, 0.9);
                       return Transform(
                           transform: Matrix4.identity()
-                            ..setEntry(3, 2, 0.001)
+                            ..setEntry(3, 2, 0.002)
                             ..rotateY(vector.radians(45 * porcent)),
                           child: Opacity(
                               opacity: (1 - opacity),
@@ -194,7 +194,7 @@ class CityItemWidget extends StatelessWidget {
               child: CityWidget(city: city),
             ),
             const Spacer(),
-            Expanded(flex: 5, child: BottomPanel(city: city))
+            Expanded(flex: 5, child: BottomPanel(city: city.citiesArr![0]))
           ],
         ),
       ),
@@ -203,10 +203,7 @@ class CityItemWidget extends StatelessWidget {
 }
 
 class BottomPanel extends StatelessWidget {
-  const BottomPanel({
-    Key? key,
-    required this.city,
-  }) : super(key: key);
+  const BottomPanel({Key? key, required this.city}) : super(key: key);
 
   final City city;
 

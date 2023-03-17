@@ -29,8 +29,17 @@ class DetailPage extends StatelessWidget {
                     flex: 4,
                     child: Padding(
                       padding: const EdgeInsets.all(16.0),
-                      child: BottomPanel(
-                        city: city,
+                      child: SingleChildScrollView(
+                        child: Column(
+                          children: List.generate(
+                              city.citiesArr!.length,
+                              (index) => SizedBox(
+                                    height:
+                                        MediaQuery.of(context).size.height * .5,
+                                    child: BottomPanel(
+                                        city: city.citiesArr![index]),
+                                  )),
+                        ),
                       ),
                     ))
               ],

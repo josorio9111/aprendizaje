@@ -1,7 +1,5 @@
-import 'package:aprendizaje/custom_painter/bottle_wather.dart';
 import 'package:aprendizaje/custom_painter/header_painter.dart';
 import 'package:flutter/material.dart';
-import 'radial_progress.dart';
 
 class CustomPainterPage extends StatefulWidget {
   const CustomPainterPage({super.key});
@@ -15,7 +13,7 @@ class _CustomPainterPageState extends State<CustomPainterPage> {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+    // final size = MediaQuery.of(context).size;
     int listLength = 10;
     return Scaffold(
       floatingActionButton: FloatingActionButton(
@@ -64,16 +62,49 @@ class _CustomPainterPageState extends State<CustomPainterPage> {
           children: [
             CustomPaint(
               painter: MyPainter(Colors.blue.shade400),
-              child: Container(
+              child: SizedBox(
                 // flex: 3,
                 height: 250,
                 child: Stack(
                   children: [
+                    Positioned(
+                        top: kToolbarHeight,
+                        left: 16,
+                        right: 16,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            InkWell(
+                              onTap: () {
+                                Navigator.pop(context);
+                              },
+                              child: Container(
+                                height: 50,
+                                width: 50,
+                                // padding: EdgeInsets.all(2),
+                                decoration: const BoxDecoration(
+                                    color: Colors.white,
+                                    shape: BoxShape.circle),
+                                child: Icon(
+                                  Icons.arrow_back,
+                                  color: Colors.pink.shade900,
+                                ),
+                              ),
+                            ),
+                            IconButton(
+                                onPressed: () {},
+                                icon: const Icon(
+                                  Icons.favorite,
+                                  color: Colors.white,
+                                  size: 28,
+                                ))
+                          ],
+                        )),
                     Align(
                       alignment: Alignment.bottomCenter,
                       child: InkWell(
                         onTap: () {
-                          print('object');
+                          // print('object');
                         },
                         child: Container(
                             padding: const EdgeInsets.symmetric(
@@ -108,16 +139,16 @@ class _CustomPainterPageState extends State<CustomPainterPage> {
                                   color: Colors.primaries[index],
                                   borderRadius: BorderRadius.only(
                                     topLeft: index == 0
-                                        ? Radius.circular(10)
+                                        ? const Radius.circular(10)
                                         : Radius.zero,
                                     topRight: index == 0
-                                        ? Radius.circular(10)
+                                        ? const Radius.circular(10)
                                         : Radius.zero,
                                     bottomLeft: index == listLength - 1
-                                        ? Radius.circular(10)
+                                        ? const Radius.circular(10)
                                         : Radius.zero,
                                     bottomRight: index == listLength - 1
-                                        ? Radius.circular(10)
+                                        ? const Radius.circular(10)
                                         : Radius.zero,
                                   ),
                                 ),
