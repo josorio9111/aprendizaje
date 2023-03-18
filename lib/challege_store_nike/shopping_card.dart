@@ -169,7 +169,7 @@ class _ShoppingCardState extends State<ShoppingCard>
                       child: SizedBox(
                         height:
                             (120.0 * _animationReSize.value).clamp(30.0, 120.0),
-                        child: widget.shoe.images.first,
+                        child: Image.asset(widget.shoe.images.first),
                       ),
                     ),
                     if (_animationReSize.value == 1) ...[

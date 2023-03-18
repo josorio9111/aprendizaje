@@ -29,34 +29,46 @@ class ListaWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Pruebas'),
-      ),
-      body: SingleChildScrollView(
-          child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              const ButtonExamples(
-                  nombre: 'Multiple Card Flow', page: MultipleCardFlow()),
-              const ButtonExamples(
-                  nombre: 'Chanllege Nike', page: ChallegeNike()),
-              ButtonExamples(
-                  nombre: 'Change Nike Store', page: StoreNikePage()),
-              const ButtonExamples(
-                  nombre: 'Custom Painter', page: CustomPainterPage()),
-              const ButtonExamples(
-                  nombre: 'Custom Navi Bar', page: CustomNaviBar()),
-              const ButtonExamples(
-                  nombre: 'Pinteres Layout', page: PinteresLayoutPage()),
-              const ButtonExamples(nombre: 'Slivers', page: SliversPage()),
-            ],
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            backgroundColor: Colors.blue.shade800,
+            floating: true,
+            primary: true,
+            toolbarHeight: 120,
+            expandedHeight: 130,
+            elevation: 0,
+            title: const Text(
+              'Ejemplos Apendizaje',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
           ),
-        ),
-      )),
+          SliverList(
+              delegate: SliverChildListDelegate([
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  const ButtonExamples(
+                      nombre: 'Multiple Card Flow', page: MultipleCardFlow()),
+                  const ButtonExamples(
+                      nombre: 'Chanllege Nike', page: ChallegeNike()),
+                  ButtonExamples(
+                      nombre: 'Change Nike Store', page: StoreNikePage()),
+                  const ButtonExamples(
+                      nombre: 'Custom Painter', page: CustomPainterPage()),
+                  const ButtonExamples(
+                      nombre: 'Custom Navi Bar', page: CustomNaviBar()),
+                  const ButtonExamples(
+                      nombre: 'Pinteres Layout', page: PinteresLayoutPage()),
+                  const ButtonExamples(nombre: 'Slivers', page: SliversPage()),
+                ],
+              ),
+            )
+          ]))
+        ],
+      ),
     );
   }
 }
@@ -70,7 +82,8 @@ class ButtonExamples extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(top: 15),
-      color: Colors.lightBlue,
+      decoration: BoxDecoration(
+          color: Colors.blue, borderRadius: BorderRadius.circular(10)),
       child: TextButton(
           onPressed: () {
             Navigator.push(
@@ -79,10 +92,20 @@ class ButtonExamples extends StatelessWidget {
             );
           },
           child: Container(
-            padding: const EdgeInsets.all(10),
-            child: Text(
-              nombre,
-              style: const TextStyle(color: Colors.white, fontSize: 18),
+            alignment: Alignment.centerLeft,
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  nombre,
+                  style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold),
+                ),
+                const Icon(Icons.arrow_forward_ios, color: Colors.white)
+              ],
             ),
           )),
     );

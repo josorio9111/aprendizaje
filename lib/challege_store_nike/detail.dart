@@ -139,7 +139,7 @@ class _StoreNikeDetailPageState extends State<StoreNikeDetailPage> {
                                                     : Duration.zero,
                                                 offset: 10,
                                                 axis: Axis.vertical,
-                                                child: sho))),
+                                                child: Image.asset(sho)))),
                                   ],
                                 ),
                               )

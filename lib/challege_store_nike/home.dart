@@ -138,7 +138,9 @@ class NikeShoeItem extends StatelessWidget {
             child: Column(
               children: [
                 const SizedBox(height: 20),
-                Hero(tag: 'image_${shoe.model}', child: shoe.images.first),
+                Hero(
+                    tag: 'image_${shoe.model}',
+                    child: Image.asset(shoe.images.first)),
                 const SizedBox(height: 10),
                 Text(
                   shoe.model.toUpperCase(),

@@ -4,7 +4,7 @@ class NikeShoes {
   final String model;
   final double oldprice;
   final double currentprice;
-  final List<FlutterLogo> images;
+  final List<String> images;
   final int modelNumber;
   final Color color;
 
@@ -23,9 +23,10 @@ final shoesNikes = <NikeShoes>[
       oldprice: 299,
       currentprice: 149,
       images: [
-        const FlutterLogo(size: 180),
-        const FlutterLogo(size: 180),
-        const FlutterLogo(size: 180)
+        'assets/images/negro.png',
+        'assets/images/verde.png',
+        'assets/images/amarillo.png',
+        'assets/images/azul.png',
       ],
       modelNumber: 90,
       color: Colors.grey.shade50),
@@ -34,9 +35,10 @@ final shoesNikes = <NikeShoes>[
       oldprice: 399,
       currentprice: 299,
       images: [
-        const FlutterLogo(size: 180),
-        const FlutterLogo(size: 180),
-        const FlutterLogo(size: 180)
+        'assets/images/verde.png',
+        'assets/images/amarillo.png',
+        'assets/images/negro.png',
+        'assets/images/azul.png',
       ],
       modelNumber: 95,
       color: Colors.red.shade50),
@@ -45,9 +47,10 @@ final shoesNikes = <NikeShoes>[
       oldprice: 349,
       currentprice: 270,
       images: [
-        const FlutterLogo(size: 180),
-        const FlutterLogo(size: 180),
-        const FlutterLogo(size: 180)
+        'assets/images/amarillo.png',
+        'assets/images/verde.png',
+        'assets/images/negro.png',
+        'assets/images/azul.png',
       ],
       modelNumber: 270,
       color: Colors.amber.shade50),
@@ -56,9 +59,11 @@ final shoesNikes = <NikeShoes>[
       oldprice: 299,
       currentprice: 149,
       images: [
-        const FlutterLogo(size: 180),
-        const FlutterLogo(size: 180),
-        const FlutterLogo(size: 180)
+        'assets/images/azul.png',
+        'assets/images/verde.png',
+        'assets/images/negro.png',
+        'assets/images/amarillo.png',
+        // const FlutterLogo(size: 180)
       ],
       modelNumber: 98,
       color: Colors.green.shade50),

@@ -3,10 +3,10 @@ import 'package:aprendizaje/shake_transition/shake.dart';
 import 'package:flutter/material.dart';
 
 class DetailNikePage extends StatefulWidget {
-  final Shoes shoe;
+  final List<Shoes> shoes;
   final int indexPass;
   const DetailNikePage(
-      {super.key, required this.shoe, required this.indexPass});
+      {super.key, required this.shoes, required this.indexPass});
 
   @override
   State<DetailNikePage> createState() => _DetailNikePageState();
@@ -25,6 +25,7 @@ class _DetailNikePageState extends State<DetailNikePage> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final shoe = widget.shoes[widget.indexPass];
     return Scaffold(
       backgroundColor: Colors.black,
       body: Stack(children: [
@@ -85,7 +86,7 @@ class _DetailNikePageState extends State<DetailNikePage> {
             right: 0,
             child: FittedBox(
               child: Text(
-                widget.shoe.categoria,
+                shoe.categoria,
                 style: TextStyle(color: Colors.grey.shade100),
               ),
             )),
@@ -95,9 +96,14 @@ class _DetailNikePageState extends State<DetailNikePage> {
             left: size.width * 0.07,
             right: size.width * 0.07,
             child: Hero(
-              tag: 'shoe_${widget.shoe.nombre}',
-              child: FlutterLogo(
-                size: (250 + 250 * valueIndexSize * 0.1).toDouble(),
+              tag: 'shoe_${shoe.nombre}',
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 300),
+                height: (250 + 250 * valueIndexSize * 0.1).toDouble(),
+                child: Image.asset(
+                  widget.shoes[indexSelect].image,
+                  // width: 10,
+                ),
               ),
             )),
         Positioned(
@@ -116,12 +122,12 @@ class _DetailNikePageState extends State<DetailNikePage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            widget.shoe.categoria.toUpperCase(),
+                            shoe.categoria.toUpperCase(),
                             style: const TextStyle(color: Colors.grey),
                           ),
                           const SizedBox(height: 8),
                           Text(
-                            widget.shoe.nombre.toUpperCase(),
+                            shoe.nombre.toUpperCase(),
                             style: const TextStyle(
                                 color: Colors.grey,
                                 fontSize: 20,
@@ -132,7 +138,7 @@ class _DetailNikePageState extends State<DetailNikePage> {
                     ),
                     ShakeTransition(
                       child: Text(
-                        widget.shoe.price,
+                        shoe.price,
                         style: const TextStyle(
                             color: Colors.grey,
                             fontSize: 24,

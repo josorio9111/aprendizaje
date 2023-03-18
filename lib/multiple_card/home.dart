@@ -108,7 +108,7 @@ class _MultipleCardFlowState extends State<MultipleCardFlow>
                       final opacity = porcent.clamp(0.0, 0.9);
                       return Transform(
                           transform: Matrix4.identity()
-                            ..setEntry(3, 2, 0.002)
+                            ..setEntry(3, 2, 0.001)
                             ..rotateY(vector.radians(45 * porcent)),
                           child: Opacity(
                               opacity: (1 - opacity),

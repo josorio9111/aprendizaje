@@ -1,4 +1,5 @@
 import 'package:aprendizaje/custom_painter/header_painter.dart';
+import 'package:aprendizaje/custom_painter/radial_progress.dart';
 import 'package:flutter/material.dart';
 
 class CustomPainterPage extends StatefulWidget {
@@ -122,6 +123,13 @@ class _CustomPainterPageState extends State<CustomPainterPage> {
                   ],
                 ),
               ),
+            ),
+            const SizedBox(height: 20),
+            const RadialProgress(
+              strokePrimary: 12,
+              porciento: 20,
+              height: 100,
+              fontStyle: TextStyle(fontSize: 15),
             ),
             Expanded(
               child: Container(
